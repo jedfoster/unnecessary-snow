@@ -6,11 +6,13 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
+    selectAll
 } from './counterSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useSelector(selectCount);
+  console.log(useSelector(selectAll));
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 

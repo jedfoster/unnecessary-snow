@@ -1,0 +1,40 @@
+[ req ]
+default_bits = 2048
+prompt = no
+distinguished_name = req_distinguished_name
+x509_extensions = usr_cert
+req_extensions = v3_req
+
+[ req_distinguished_name ]
+countryName = US
+stateOrProvinceName = Washington
+localityName = Seattle
+organizationName = Roughdraft Industries
+commonName = local.drft.io
+
+[ usr_cert ]
+basicConstraints = CA:FALSE
+nsComment = "OpenSSL Generated Certificate"
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid, issuer
+subjectAltName = @alt_names
+
+[ v3_req ]
+basicConstraints = CA:TRUE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[ v3_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = CA:TRUE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[ crl_ext ]
+authorityKeyIdentifier = keyid:always
+
+[ alt_names ]
+DNS.1   = localhost
+DNS.2   = local.drft.io
+DNS.3   = local.sassmeister.com

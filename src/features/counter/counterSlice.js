@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import store from '../../app/store';
+
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
@@ -22,7 +24,10 @@ export const counterSlice = createSlice({
   },
 });
 
+console.log('counterSlice: ', counterSlice);
+
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+console.log('counterSlice: incrementByAmount: ', incrementByAmount);
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -37,6 +42,12 @@ export const incrementAsync = amount => dispatch => {
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = state => state.counter.value;
+export const selectCount = state => {
+ return state.counter.value;
+}
+
+export const selectAll = state => state;
+
+store.injectReducer(counterSlice.name, counterSlice.reducer);
 
 export default counterSlice.reducer;
