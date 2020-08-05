@@ -1,16 +1,15 @@
-import { createStore, configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 let reducers = {};
 
-const store = createStore(s => s);
+const store = configureStore({ reducer: {} });
 
 store.injectReducer = (key, reducer) => {
   reducers[key] = reducer;
   store.replaceReducer(combineReducers(reducers));
 };
-
+console.log(store);
 export default store;
-
 
 // import { combineReducers } from 'redux'
 
