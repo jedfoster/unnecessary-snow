@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 let reducers = {};
 
-const store = configureStore({ reducer: {} });
+const store = configureStore({ reducer: () => {} });
 
 store.injectReducer = (key, reducer) => {
   reducers[key] = reducer;
